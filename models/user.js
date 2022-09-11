@@ -24,10 +24,12 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    user_name: {
+
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -37,6 +39,7 @@ User.init(
       },
     },
   },
+  // Hook and encryption:
   {
     hooks: {
       beforeCreate: async (newUserData) => {

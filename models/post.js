@@ -17,17 +17,21 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
+
     title: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
+        // Sets title length between 1 character to 50.
         len: [1, 50],
       },
     },
+
     contents: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
+        // Contents length 1 character to 250.
         len: [1, 250],
       },
     },

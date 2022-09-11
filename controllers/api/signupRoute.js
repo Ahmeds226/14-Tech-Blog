@@ -1,12 +1,14 @@
 // Imports:
 const router = require("express").Router();
 const { response } = require("express");
+
+// Imported models:
 const { User } = require("../../models");
 
 // Create an account:
 router.post("/", async (req, res) => {
   const findUser = await User.findOne({
-    where: { user_name: req.body.user_name },
+    where: { username: req.body.username },
   });
 
   // User picked a username in use:
@@ -19,7 +21,7 @@ router.post("/", async (req, res) => {
   }
   try {
     const user = await User.create({
-      user_name: req.body.user_name,
+      username: req.body.username,
       password: req.body.password,
     });
 

@@ -1,8 +1,8 @@
 // Username and password input validation:
-const checkInputs = (user_name, password) => {
+const checkInputs = (username, password) => {
   // Username must equal to one of the ones in the db:
   // if not the user will get this message:
-  if (user_name == "") {
+  if (username == "") {
     alert("Please enter a valid username");
   }
 

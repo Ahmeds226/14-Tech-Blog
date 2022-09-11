@@ -4,13 +4,13 @@ const loginHandler = async (e) => {
 
   // Removes all spaces from the username and password string:
   // Username:
-  const user_name = $("#user-name").val().trim();
+  const username = $("#user-name").val().trim();
 
   // Password:
   const password = $("#password").val().trim();
 
   // Username:
-  if (user_name == "") {
+  if (username == "") {
     $("#user-name").attr("style", "background-color: rgb(173,216,230);");
     $("#user-name").attr("placeholder", "Please enter a username");
   }
@@ -23,10 +23,10 @@ const loginHandler = async (e) => {
 
   // If username and password have been entered
   // Success:
-  if (user_name && password) {
+  if (username && password) {
     const response = await fetch("/api/login", {
       method: "POST",
-      body: JSON.stringify({ user_name, password }),
+      body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },
     });
     // Failure:

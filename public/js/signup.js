@@ -4,13 +4,13 @@ const signUpHandler = async (e) => {
 
   // Removes all spaces from the username and password string:
   // Username for signup:
-  const user_name = $("#signup-username").val().trim();
+  const username = $("#signup-username").val().trim();
 
   // Password for signup:
   const password = $("#signup-password").val().trim();
 
   // Username;
-  if (user_name == "") {
+  if (username == "") {
     $("#signup-username").attr("style", "border-color: red;");
     $("#signup-username").attr("placeholder", "Please enter a username");
   }
@@ -23,10 +23,10 @@ const signUpHandler = async (e) => {
   }
 
   // Wait for the user to complete the sign up:
-  if (user_name && password) {
+  if (username && password) {
     const response = await fetch("/api/signup", {
       method: "POST",
-      body: JSON.stringify({ user_name, password }),
+      body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },
     });
 
@@ -39,7 +39,7 @@ const signUpHandler = async (e) => {
       // Redirects user to homepage when successfully signed up:
       document.location.replace("/");
     } else {
-      return alert("Username is taked please try another username");
+      return alert("Username is taken please try another username");
     }
   }
 };

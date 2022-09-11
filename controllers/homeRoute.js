@@ -1,6 +1,10 @@
 // Import:
 const router = require("express").Router();
+
+// Imported models:
 const { User, Post, Comment } = require("../models");
+
+// Imported authorisation utility:
 const auth = require("../utils/auth");
 
 // Homepage:
@@ -50,7 +54,7 @@ router.get("/post/:id", async (req, res) => {
           include: [
             {
               model: User,
-              attributes: ["user_name"],
+              attributes: ["username"],
             },
           ],
         },

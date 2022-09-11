@@ -1,5 +1,7 @@
 // Imports:
 const router = require("express").Router();
+
+// Imported comment models:
 const { Comment } = require("../../models");
 
 // Create post:

@@ -1,5 +1,7 @@
 // Imports:
 const router = require("express").Router();
+
+// Imported models:
 const { User, Post, Comment } = require("../../models");
 
 // Get all posts:

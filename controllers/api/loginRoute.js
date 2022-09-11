@@ -1,12 +1,14 @@
 // Imports:
 const router = require("express").Router();
+
+// Imported user models:
 const { User } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
     // Checks the database to see if the username is in the database
     const userCheck = await User.findOne({
-      where: { user_name: req.body.user_name },
+      where: { username: req.body.username },
     });
     // If no username is found then the user is presented with a incorrect username please try again
     if (!userCheck) {
@@ -17,7 +19,7 @@ router.post("/", async (req, res) => {
     // Once the username is correct, the password is checked
     // The password is then checked to see if the username and password combination is correct
     const validPassword = await userCheck.checkPw(req.body.password);
-    // If the password is incorrec then the appropiate message of incorrect message is displayed
+    // If the password is incorrect then the appropiate message of incorrect message is displayed
     if (!validPassword) {
       res.status(401).json({ message: "Incorrect password" });
       return;

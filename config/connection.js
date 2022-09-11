@@ -2,7 +2,7 @@
 // Sequelize:
 const Sequelize = require("sequelize");
 
-// Dotenv:
+// dotenv:
 require("dotenv").config();
 
 let sequelize;

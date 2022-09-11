@@ -1,5 +1,7 @@
 // Imports:
 const router = require("express").Router();
+
+// Imported user model:
 const { User } = require("../../models");
 
 // Logout:

@@ -1,6 +1,10 @@
 // Imports:
 const router = require("express").Router();
+
+// Imported models:
 const { User, Post, Comment } = require("../models");
+
+// Imported authorisation util:
 const auth = require("../utils/auth");
 
 // Get all users posts:
@@ -15,12 +19,13 @@ router.get("/", async (req, res) => {
           model: Comment,
           include: {
             model: User,
-            attributes: ["user_name"],
+            attributes: ["username"],
           },
         },
       ],
     });
 
+    // Dashboard posts
     const userPosts = user.map((post) => post.get({ plain: true }));
     res.render("dashboard", {
       userPosts,
@@ -32,7 +37,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get posts via username:
+// Get posts via id:
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findByPk(req.params.id, {
@@ -41,12 +46,12 @@ router.get("/:id", async (req, res) => {
           model: Comment,
           include: {
             model: User,
-            attributes: ["user_name"],
+            attributes: ["username"],
           },
         },
         {
           model: User,
-          attributes: ["user_name"],
+          attributes: ["username"],
         },
       ],
     });
