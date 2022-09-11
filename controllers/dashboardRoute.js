@@ -67,5 +67,5 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Imports:
+// Exports:
 module.exports = router;
