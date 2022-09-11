@@ -1,4 +1,5 @@
 // Imports:
+// Routes:
 const router = require("express").Router();
 const loginRoute = require("./loginRoute");
 const logoutRoute = require("./logoutRoute");
@@ -12,4 +13,5 @@ router.use("/post", postRoute);
 router.use("/signup", signupRoute);
 router.use("/comment", commentRoute);
 
+// Export:
 module.exports = router;

@@ -3,11 +3,13 @@ const router = require("express").Router();
 const { response } = require("express");
 const { User } = require("../../models");
 
+// Create an account:
 router.post("/", async (req, res) => {
   const findUser = await User.findOne({
     where: { user_name: req.body.user_name },
   });
 
+  // User picked a username in use:
   if (findUser) {
     res.status(400).json({
       message:
@@ -31,4 +33,5 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Export:
 module.exports = router;

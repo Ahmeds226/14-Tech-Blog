@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const { Comment } = require("../../models");
 
+// Create post:
 router.post("/:id", async (req, res) => {
   try {
     const message = await Comment.create({
@@ -15,4 +16,5 @@ router.post("/:id", async (req, res) => {
   }
 });
 
+// Export:
 module.exports = router;

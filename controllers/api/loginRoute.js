@@ -22,11 +22,9 @@ router.post("/", async (req, res) => {
       res.status(401).json({ message: "Incorrect password" });
       return;
     }
-
     req.session.save(() => {
       req.session.user_id = userCheck.id;
       req.session.logged_in = true;
-
       res.json({ user: userCheck, message: "Successfully logged in" });
     });
   } catch (error) {
@@ -37,6 +35,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Logout:
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -47,4 +46,5 @@ router.post("/logout", (req, res) => {
   }
 });
 
+// Export:
 module.exports = router;

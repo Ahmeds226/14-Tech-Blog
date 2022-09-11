@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../../models");
 
+// Get all posts:
 router.get("/", async (req, res) => {
   try {
     const postedData = await Post.findAll({
@@ -24,6 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get posts via ID:
 router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findByPk(req.params.id, {
@@ -46,6 +48,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Create a post:
 router.post("/", async (req, res) => {
   try {
     const post = await Post.create({
@@ -59,6 +62,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Update post via id:
 router.put("/:id", async (req, res) => {
   try {
     const updatePost = await Post.update(req.body, {
@@ -73,6 +77,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// Delete post via id:
 router.delete("/:id", async (req, res) => {
   try {
     const delPost = await Post.destroy({ where: { id: req.params.id } });
@@ -82,4 +87,5 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Export:
 module.exports = router;

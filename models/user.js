@@ -1,15 +1,21 @@
 // Imports:
+// Import important parts of sequelize library
 const { Model, DataTypes } = require("sequelize");
+
+// Import bcrpyt:
 const bcrypt = require("bcrypt");
+
+// Import database connection from config.js
 const sequelize = require("../config/connection");
 
+// Initialize User model by extending off Sequelize's Model class
 class User extends Model {
   checkPw(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
-// Username and Password:
+// Username and Password fields:
 User.init(
   {
     id: {
@@ -46,4 +52,5 @@ User.init(
   }
 );
 
+// Export:
 module.exports = User;

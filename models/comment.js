@@ -1,10 +1,14 @@
 // Imports:
+// Import important parts of sequelize library
 const { Model, DataTypes } = require("sequelize");
+
+// Import database connection from config.js
 const sequelize = require("../config/connection");
 
+// Initialize Comment model by extending off Sequelize's Model class
 class Comment extends Model {}
 
-// Comment details:
+// Comment fields:
 Comment.init(
   {
     id: {
@@ -18,7 +22,7 @@ Comment.init(
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [1, 150],
+        len: [1, 250],
       },
     },
 
